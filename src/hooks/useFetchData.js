@@ -12,10 +12,10 @@ export default function useFetchData(url) {
       try {
         const filmData = await fetch(url).then((resp) => resp.json());
 
-        setResponse({
-          ...response,
+        setResponse((prevResponse) => ({
+          ...prevResponse,
           loading: 1,
-        });
+        }));
 
         const homeworldUrls = new Set();
         const characterPromises = filmData.characters.map(
@@ -32,10 +32,10 @@ export default function useFetchData(url) {
           characterPromises,
         ).then((resolved) => resolved.map((entry) => entry.value));
 
-        setResponse({
-          ...response,
+        setResponse((prevResponse) => ({
+          ...prevResponse,
           loading: 2,
-        });
+        }));
 
         const homeworldUrlArray = [...homeworldUrls];
 

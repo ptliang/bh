@@ -1,7 +1,7 @@
 import '../styles/Table.css';
 
 export default function Table(props) {
-  const { loading, data, error } = props;
+  const { loading, data } = props;
   const loadingMsgs = [
     'Loading film data...',
     'Loading character data...',
